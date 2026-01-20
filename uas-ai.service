@@ -1,0 +1,16 @@
+[Unit]
+Description=UAS AI Traffic Sign Recognition API
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user
+ExecStart=/usr/bin/python3 /home/ec2-user/API.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/ec2-user/flask.log
+StandardError=append:/home/ec2-user/flask-error.log
+
+[Install]
+WantedBy=multi-user.target
