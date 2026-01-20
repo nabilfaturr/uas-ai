@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Sign Recognition</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .preview {
+      margin-top: 15px;
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 6px;
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Upload Traffic Sign</h2>
+
+  <input type="file" id="imageInput" accept="image/*">
+
+  <div>
+    <img id="preview" class="preview" />
+  </div>
+
+  <button onclick="send()">Predict</button>
+
+  <div class="result" id="result"></div>
+
+<script>
+  const input = document.getElementById("imageInput");
+  const preview = document.getElementById("preview");
+  const resultBox = document.getElementById("result");
+
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    preview.src = URL.createObjectURL(file);
+  });
+
+  async function send() {
+    const file = input.files[0];
+    if (!file) {
+      alert("Pilih gambar dulu!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    resultBox.innerHTML = "Processing...";
+
+    // Auto-detect API URL (works locally and on cloud)
+    const apiUrl = `${window.location.origin}/predict`;
+
+    const res = await fetch(apiUrl, {
+    method: "POST",
+    body: formData
+    });
+
+    const data = await res.json();
+
+    resultBox.innerHTML = `
+    <b>Label:</b> ${data.label}<br>
+    <b>Class ID:</b> ${data.class_id}<br>
+    <b>Confidence:</b> ${data.confidence.toFixed(4)}
+    `;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "cluster": {
+        "clusterArn": "arn:aws:ecs:ap-southeast-1:864616058050:cluster/traffic-signs-cluster",
+        "clusterName": "traffic-signs-cluster",
+        "status": "ACTIVE",
+        "registeredContainerInstancesCount": 0,
+        "runningTasksCount": 0,
+        "pendingTasksCount": 0,
+        "activeServicesCount": 0,
+        "statistics": [],
+        "tags": [],
+        "settings": [
+            {
+                "name": "containerInsights",
+                "value": "disabled"
+            }
+        ],
+        "capacityProviders": [],
+        "defaultCapacityProviderStrategy": []
+    }
+}
