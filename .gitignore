@@ -48,6 +48,18 @@ wheels/
 .env.*.local
 
 # Large model files (download from external storage)
+
+# AWS Credentials & Keys - NEVER COMMIT THESE!
+*.pem
+*.key
+aws-credentials.txt
+credentials/
+
+# Temporary files & command outputs
+"Lightsail available"
+sts*
+ec2*
+tance*
 # *.pth will be downloaded during build
 
 
