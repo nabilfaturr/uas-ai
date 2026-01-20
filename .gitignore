@@ -47,11 +47,9 @@ wheels/
 .env.local
 .env.*.local
 
-# Large model files (already tracked or not needed to push)
-*.pth
-*.pt
-*.pkl
-*.model
+# Large model files (download from external storage)
+# *.pth will be downloaded during build
+
 
 # OS
 .DS_Store
